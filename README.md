@@ -68,5 +68,13 @@ The above command configures the PHPStorm inspector automatically, but you can d
 Include the configuration files in the root directory of your project:
 
 PHPCodeSniffer: phpcs.xml
+
 PHPMessDetector: ruleset.xml
+
 PHPStan: phpstan.neon
+
+## TODO
+
+### TwigCS
+### JSCS
+### CSFIXER
