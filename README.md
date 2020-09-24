@@ -1,43 +1,72 @@
 <h1>PHP Code Quality Tools</h1>
 
-# Installation
+## PHPCodeSniffer
+
+### Installation
 
 ```bash
-$ export PATH="$PATH:$HOME/.composer/vendor/bin"
+$ composer require --dev "squizlabs/php_codesniffer"
 ```
 
-## PHP_CodeSniffer (https://github.com/squizlabs/PHP_CodeSniffer)
+Now you can run `vendor/bin/phpcs` to check the code.
+
+[More details](https://github.com/squizlabs/PHP_CodeSniffer)
+
+### Integrate with PHPStorm
+
+The above command configures the PHPStorm inspector automatically, but you can do it manually:
+
+1. Configure path in `File->Settings->Languages->Frameworks->PHP->Quality Tools`
+2. Enable it in `File->Settings->Editor->Inspections`
+
+[More details](https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html)
+
+## PHPMessDetector
+
+### Installation
 
 ```bash
-$ composer global require "squizlabs/php_codesniffer=*"
+$ composer require --dev "phpmd/phpmd"
 ```
 
-Now you can run `phpcs` to check the code.
+Now you can run `vendor/bin/phpmd src/ ansi ruleset.xml` to check the code.
 
-### Integrate with PHPStorm (https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html)
+[More details](https://phpmd.org/)
 
-Define the local path:
+### Integrate with PHPStorm
 
-<img src="https://github.com/bigboss86/PHP-Code-Quality-Tools/blob/master/phpcs_1.png" alt="phpcs_1">
+The above command configures the PHPStorm inspector automatically, but you can do it manually:
 
-and enable it:
+1. Configure path in `File->Settings->Languages->Frameworks->PHP->Quality Tools`
+2. Enable it in `File->Settings->Editor->Inspections`
 
-<img src="https://github.com/bigboss86/PHP-Code-Quality-Tools/blob/master/phpcs_2.png" alt="phpcs_2">
+[More details](https://www.jetbrains.com/help/phpstorm/using-php-mess-detector.html)
 
-## PHP Mess Detector (https://github.com/squizlabs/PHP_CodeSniffer)
+## PHPStan
+
+### Installation
+
+[More details](https://github.com/phpstan/phpstan)
 
 ```bash
-$ composer global require phpmd/phpmd
+$ composer require --dev "phpstan/phpstan"
+$ composer require --dev "phpstan/phpstan-doctrine"
+$ composer require --dev "phpstan/phpstan-webmozart-assert"
 ```
 
-Now you can run `phpmd src/ ansi codesize,unusedcode,naming` to check the code.
+Now you can run `vendor/bin/phpstan analyse -c phpstan.neon -l max src/` to check the code.
 
-### Integrate with PHPStorm (https://www.jetbrains.com/help/phpstorm/using-php-mess-detector.html)
+### Integrate with PHPStorm
 
-Define the local path:
+The above command configures the PHPStorm inspector automatically, but you can do it manually:
 
-<img src="https://github.com/bigboss86/PHP-Code-Quality-Tools/blob/master/phpmd_1.png" alt="phpmd_1">
+1. Configure path in `File->Settings->Languages->Frameworks->PHP->Quality Tools`
+2. Enable it in `File->Settings->Editor->Inspections`
 
-and enable it:
+## Configuration Files
 
-<img src="https://github.com/bigboss86/PHP-Code-Quality-Tools/blob/master/phpmd_2.png" alt="phpmd_2">
+Include the configuration files in the root directory of your project:
+
+PHPCodeSniffer: phpcs.xml
+PHPMessDetector: ruleset.xml
+PHPStan: phpstan.neon
