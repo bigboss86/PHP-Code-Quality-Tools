@@ -1,0 +1,35 @@
+#!/usr/bin/php
+<?php
+
+echo PHP_EOL;
+echo '+ Starting tests'.PHP_EOL;
+echo PHP_EOL;
+
+exec('vendor/bin/phpcs', $output, $returnCode);
+if ($returnCode !== 0) {
+  printf("PHPCS tests failed!");
+  echo PHP_EOL;
+  echo PHP_EOL;
+  printf("ABORTING COMMIT!\n");
+  exit(1);
+}
+
+exec('vendor/bin/phpmd src/ ansi ruleset.xml', $output, $returnCode);
+if ($returnCode !== 0) {
+  printf("PHPMD tests failed!");
+  echo PHP_EOL;
+  echo PHP_EOL;
+  printf("ABORTING COMMIT!\n");
+  exit(1);
+}
+
+exec('vendor/bin/phpstan analyse -c phpstan.neon -l max src/', $output, $returnCode);
+if ($returnCode !== 0) {
+  printf("PHPSTAN tests failed!");
+  echo PHP_EOL;
+  echo PHP_EOL;
+  printf("ABORTING COMMIT!\n");
+  exit(1);
+}
+
+exit(0);
