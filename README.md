@@ -77,7 +77,7 @@ PHPStan: phpstan.neon
 
 ## Git Validation
 
-Include the pre-push file into `.git/hooks` in your project.
+Include the pre-commit file into `.git/hooks` in your project.
 
 ## TODO
 
