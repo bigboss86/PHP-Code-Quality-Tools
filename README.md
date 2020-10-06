@@ -10,6 +10,8 @@ $ composer require --dev "squizlabs/php_codesniffer"
 
 Now you can run `vendor/bin/phpcs` to check the code.
 
+Many errors can be fixed with the next command: `vendor/bin/phpcbf`
+
 [More details](https://github.com/squizlabs/PHP_CodeSniffer)
 
 ### Integrate with PHPStorm
